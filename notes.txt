@@ -1,0 +1,34 @@
+Node Sass version 6.0.1 is incompatible with ^4.0.0
+----------------------------------------------------------------- 
+You could try uninstalling node-sass and replacing it with sass.  
+
+npm un node-sass
+npm i -D sass
+-------------------------------
+For the ones that uses yarn:
+
+yarn remove node-sass
+yarn add node-sass
+-------------------------------
+I am using node v16.4.2 and let me tell you, this was a pain in the you know what to get working but I did figure it out.
+
+1. npm install node-sass
+2. npm install sass-loader@latest
+3. nvm install latest
+4. nvm use 16.4.2
+5. npm rebuild node-sass This gave me some errors
+6 npm install
+
+Then everything worked like it should.
+
+react v17.0.2
+react-dom v17.0.2
+react-scripts v4.0.3
+sass-loader v12.1.0
+node-sass v6.0.1
+------------------------------------------
+After upgrading NodeJS to 14.x.x
+
+This worked:
+
+npm rebuild node-sass
