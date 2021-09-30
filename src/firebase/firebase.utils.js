@@ -18,6 +18,39 @@ const firebaseConfig = {
     measurementId: "G-NGM1E7FP5W"
   };
 
+//  function must ensure that we're getting an object returned
+//  exit from function.  Query inside firestore
+//  Querying Firestore will always returns one of two objects: reference or snapshot 
+//  They can be either Document or Collection versions.
+
+  export const createUserProfile = async (userAuth, addData ) => {
+    if (!userAuth) return;
+
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+    const snapshot = await userRef.get();
+
+    if (!snapshot.exists) {
+      const { displayName, email } = userAuth;
+      const createdAt = new Date();
+      try { 
+        await userRef.set ( {
+          displayName,
+          email,
+          createdAt,
+          ...addData
+        });
+      } catch ( error ) {
+        console.log('error creating user, error.message');
+
+      }
+    }
+
+    return userRef;
+    // console.log (firestore.doc('users/1231sdfsd'))
+  };
+
+
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();

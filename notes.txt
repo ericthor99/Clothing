@@ -1,3 +1,18 @@
+Git:
+------------------------------------
+added ssh key to gitbash via agent.
+added ssh key.pub to git keys.
+
+git status
+git add -A
+git commit -m "some message"
+git psuh origin master
+
+
+
+
+
+------------------------------------------------------
 Node Sass version 6.0.1 is incompatible with ^4.0.0
 ----------------------------------------------------------------- 
 You could try uninstalling node-sass and replacing it with sass.  

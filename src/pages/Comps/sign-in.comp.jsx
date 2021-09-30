@@ -14,12 +14,12 @@ class SignIn extends React.Component {
         };
     }
 
-    handleSubmit = event => {
+    handleSubmit = (event) => {
         event.preventDefault();
         this.setState( { email: '', password: '' });
     };
 
-    handleChange = event => {
+    handleChange = (event) => {
         const { value, name } = event.target;
 //  Dynamically set the value with [name]:
         this.setState ( { [name]:value } );
@@ -49,7 +49,8 @@ class SignIn extends React.Component {
                     required />
                
                     <div className='buttons'>
-                        <CustomButton type = 'submit' value = 'Submit Form'>Sign In</CustomButton>  
+                        <CustomButton type = 'submit'>Sign In</CustomButton>  
+                        {/* <CustomButton type = 'submit' value = 'Submit Form'>Sign In</CustomButton>   */}
                         <CustomButton onClick = { signInWithGoogle } isGoogleSignIn>
                             Sign In With Google 
                         </CustomButton>
