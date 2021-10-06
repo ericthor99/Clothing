@@ -11,7 +11,9 @@ import Header                         from './Components/header.comp';
 import { auth }                       from './firebase/firebase.utils';
 import { createUserProfile }          from './firebase/firebase.utils';
 import { connect }                    from 'react-redux';
-import { setCurrentUser }             from './redux/user/user.actions'   ;
+import { setCurrentUser }             from './redux/user/user.actions';
+import { selectCurrentUser }          from './redux/user/user.select';
+import { createStructuredSelector }   from 'reselect';
 
 import './pages/homepage.styles.scss';
 import './App.css';
@@ -83,8 +85,8 @@ componentWillUnmount() {
   
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps =  createStructuredSelector => ({
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = ( dispatch ) => ({
