@@ -3,9 +3,10 @@ import { connect }                      from 'react-redux';
 
 import CustomButton                     from './../../pages/Comps/custom-button.comp';
 import CartItem                         from '../cart-item/cart-item.comp';
-import { selectCartItems }              from '../../redux/cart/cart.select';
+import { selectCartItems }              from '../../redux/cart/cart.selectors';
+import { toggleCartHidden }             from '../../redux/cart/cart.actions';
 import { createStructuredSelector }     from 'reselect';
-// import { withRouter } from 'react-router-dom';
+import { withRouter }                   from 'react-router-dom';
 
 
 import './cart-dropdown.styles.scss';
@@ -47,16 +48,26 @@ import './cart-dropdown.styles.scss';
 
 // export default withRouter(connect(mapStateToProps)(CartDropdown));
 //! ---------------------------------------------------------------------
+//  Conditionally render if the cartItems array is not empty.
+//  cartItems.length > 0
 
-
-const CartDropdown = ({ cartItems }) => (
+const CartDropdown = ({ cartItems, history, dispatch }) => (
     <div className='cart-dropdown'>
       <div className='cart-items'>
-        {cartItems.map(cartItem => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))}
-      </div>
-      <CustomButton>GO TO CHECKOUT</CustomButton>
+        {
+          cartItems.length ? ( 
+            cartItems.map ( cartItem => (
+              <CartItem key = { cartItem.id } item = { cartItem } />
+              ))
+            ) : (
+              <span className = 'empty-message'>Your cart is empty</span>
+            )}
+          </div>
+          <CustomButton onClick = {() => { 
+           history.push ('/checkout');
+           dispatch ( toggleCartHidden() );
+           }}>GO TO CHECKOUT</CustomButton>
+         
     </div>
   );
   
@@ -64,4 +75,4 @@ const CartDropdown = ({ cartItems }) => (
     cartItems: selectCartItems
   });
   
-  export default connect(mapStateToProps)(CartDropdown);
+  export default withRouter (connect(mapStateToProps)(CartDropdown));

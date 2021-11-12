@@ -1,18 +1,21 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-
+//! ================  Imported Pages:  ========================================
 import HomePage                       from './pages/homepage.comp';
 import ShopPage                       from './pages/shop.comp';
 // import SignInPage                     from './pages/signin-page.comp';
 import SignInAndSignUpPage            from './pages/Comps/sign-in-and-up.comp';
+import CheckoutPage                   from './pages/checkout/checkout.comp';
 
+// ============================================================================
 import Header                         from './Components/header.comp';
 import { auth }                       from './firebase/firebase.utils';
 import { createUserProfile }          from './firebase/firebase.utils';
 import { connect }                    from 'react-redux';
 import { setCurrentUser }             from './redux/user/user.actions';
-import { selectCurrentUser }          from './redux/user/user.select';
+import { selectCurrentUser }          from './redux/user/user.selectors';
+// eslint-disable-next-line no-unused-vars
 import { createStructuredSelector }   from 'reselect';
 
 import './pages/homepage.styles.scss';
@@ -66,7 +69,8 @@ componentWillUnmount() {
         <div> 
           <Header  />
            <Switch>
-            
+            <Route   exact path='/' component = { HomePage } />
+            <Route   path='/checkout' component = { CheckoutPage } />
             <Route   exact path='/shop' component = { ShopPage } />
             <Route   path='/signin' 
                      render = { () => this.props.currentUser ? ( 

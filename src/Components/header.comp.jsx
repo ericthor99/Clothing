@@ -8,8 +8,8 @@ import CartIcon                     from './cart-icon.comp';
 import CartDropDown                 from './cart/cart-dropdown.comp';
 import { createStructuredSelector } from 'reselect';
 
-import { selectCartHidden }         from '../redux/cart/cart.select';
-import { selectCurrentUser }        from '../redux/user/user.select';
+import { selectCartHidden }         from '../redux/cart/cart.selectors';
+import { selectCurrentUser }        from '../redux/user/user.selectors';
 
 
 //? -----------------------------------------------------------------------------------
