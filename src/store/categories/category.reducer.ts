@@ -1,16 +1,17 @@
-import { Category } from './category.types';
+import { AnyAction }                      from 'redux';
+import { Category }                       from './category.types';
 
 import {
-  fetchCategoriesStart,
-  fetchCategoriesSuccess,
-  fetchCategoriesFailed,
-} from './category.action';
-import { AnyAction } from 'redux';
+          fetchCategoriesStart,
+          fetchCategoriesSuccess,
+          fetchCategoriesFailed,
+                                    }     from './category.action';
+        
 
 export type CategoriesState = {
-  readonly categories: Category[];
-  readonly isLoading: boolean;
-  readonly error: Error | null;
+    readonly categories: Category[];
+    readonly isLoading: boolean;
+    readonly error: Error | null;
 };
 
 export const CATEGORIES_INITIAL_STATE: CategoriesState = {
@@ -20,9 +21,10 @@ export const CATEGORIES_INITIAL_STATE: CategoriesState = {
 };
 
 export const categoriesReducer = (
-  state = CATEGORIES_INITIAL_STATE,
-  action = {} as AnyAction
-): CategoriesState => {
+          state = CATEGORIES_INITIAL_STATE,
+          action = {} as AnyAction 
+          ): 
+          CategoriesState => {
   if (fetchCategoriesStart.match(action)) {
     return { ...state, isLoading: true };
   }

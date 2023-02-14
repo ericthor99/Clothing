@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "downlevelIteration": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -14,7 +20,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "rootDir": "./src",
   },
-  "include": ["src"]
-}
+  "include": [
+    "src/**/*",
+    "src/custom.d.ts"
+  ],
+ }
