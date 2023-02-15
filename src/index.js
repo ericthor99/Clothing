@@ -11,6 +11,8 @@ import { stripePromise }            from "./utils/stripe/stripe.utils";
 
 import                               "./index.scss";
  
+// gggg
+
 const rootElement = document.getElementById("root");
 
 render(
